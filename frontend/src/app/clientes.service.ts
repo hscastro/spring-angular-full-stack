@@ -8,10 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class ClientesService {
 
-  constructor(private http: HttpClient ) { }
+  private http: HttpClient
+
+  constructor(http: HttpClient ) {
+     this.http = http
+  }
 
 
-  salvar(cliente: Cliente ) : Observable<Cliente> {
+  public salvar(cliente: Cliente ) : Observable<Cliente> {
       return this.http.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 
@@ -19,7 +23,7 @@ export class ClientesService {
     let cliente: Cliente = new Cliente();
     cliente.nome = 'Antonio Halyson';
     cliente.cpf = '92873719901';
-    
+
     return cliente;
   }
 }
