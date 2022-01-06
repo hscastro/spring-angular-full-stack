@@ -7,5 +7,4 @@ import com.hscastro.entities.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
-
 }
