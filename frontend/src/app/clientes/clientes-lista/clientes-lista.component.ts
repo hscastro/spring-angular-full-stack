@@ -12,6 +12,8 @@ export class ClientesListaComponent implements OnInit {
 
   clientes: Cliente[] = [];
   clienteSelecionado: Cliente;
+  mensagemSucesso: string;
+  mensagemErro: string;
 
   constructor(
     private service: ClientesService,
@@ -29,6 +31,15 @@ export class ClientesListaComponent implements OnInit {
 
   preparaExclusao(cliente : Cliente){
     this.clienteSelecionado = cliente;
+  }
+
+  excluirCliente(){
+    this.service.excluir(this.clienteSelecionado)
+      .subscribe( response => {
+          this.mensagemSucesso = 'Cliente excluído com sucesso!';
+          this.ngOnInit();
+        },
+        erro => this.mensagemErro = 'Ocorreu um erro ao excluir o cliente.')
   }
 
 }

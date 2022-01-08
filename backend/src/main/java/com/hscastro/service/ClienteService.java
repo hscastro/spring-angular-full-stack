@@ -29,15 +29,25 @@ public class ClienteService {
 
 	public Cliente update(Long id, Cliente clienteUpdate) {
 		return clienteRepository
-				.findById(id)
-				.map(cliente -> {
-					 cliente.setNome(clienteUpdate.getNome());
-					 cliente.setCpf(clienteUpdate.getCpf());
-					 return clienteRepository.save(cliente);
-				})
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+			.findById(id)
+			.map(cliente -> {
+				 cliente.setNome(clienteUpdate.getNome());
+				 cliente.setCpf(clienteUpdate.getCpf());
+				 return clienteRepository.save(cliente);
+			})
+			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
 	}
 	
+	public void delete(Long id) {
+		clienteRepository
+			.findById(id)
+			.map(cliente -> {
+				 clienteRepository.delete(cliente);
+				 return Void.TYPE;
+			})
+			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
+	}
+
 	public List<Cliente> findAll() {
 		return clienteRepository.findAll();
 	}

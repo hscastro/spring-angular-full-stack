@@ -16,10 +16,15 @@ public class ApiClientesApplication {
 	public CommandLineRunner run(@Autowired ClienteRepository repo) {
 		return args -> {
 			
-			Cliente cliente = new Cliente();
-			cliente.setNome("Fulano");
-			cliente.setCpf("00000000000");
-			repo.save(cliente);
+			Cliente cliente1 = new Cliente();
+			cliente1.setNome("Fulano da Silva");
+			cliente1.setCpf("72827263620");
+			repo.save(cliente1);
+
+			Cliente cliente2 = new Cliente();
+			cliente2.setNome("Beltrano de Oliveira");
+			cliente2.setCpf("84834234245");
+			repo.save(cliente2);
 		};
 	}
 
