@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "cliente")
@@ -23,12 +26,15 @@ public class Cliente implements Serializable {
 	private Long id;
 	
 	@Column(name = "nome", nullable = false, length = 150)
+	@NotEmpty(message = "{campo.nome.obrigatorio}")
 	private String nome;
 
 	@Column(name = "cpf", nullable = false, length = 11)
+	@NotEmpty(message = "{campo.cpf.obrigatorio}")
 	private String cpf;
 
-	@Column(name = "dataCadastro")
+	@Column(name = "dataCadastro", updatable = false)
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 
 	public Cliente() {
