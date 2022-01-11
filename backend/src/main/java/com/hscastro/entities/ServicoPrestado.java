@@ -2,6 +2,7 @@ package com.hscastro.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -13,9 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "servico")
-public class Servico implements Serializable {
+public class ServicoPrestado implements Serializable {
 	
 	private static final long serialVersionUID = -2709945458591238976L;
 	
@@ -33,7 +36,12 @@ public class Servico implements Serializable {
 	@Column(name = "valor")
 	private BigDecimal valor;
 
-	public Servico() {
+	@Column(name = "data")
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate data;
+
+
+	public ServicoPrestado() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -69,6 +77,14 @@ public class Servico implements Serializable {
 		this.valor = valor;
 	}
 
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -82,7 +98,7 @@ public class Servico implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Servico other = (Servico) obj;
+		ServicoPrestado other = (ServicoPrestado) obj;
 		return Objects.equals(id, other.id);
 	}
 	
