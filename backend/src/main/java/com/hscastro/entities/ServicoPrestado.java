@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "servico")
+@Table(name = "ServicoPrestado")
 public class ServicoPrestado implements Serializable {
 	
 	private static final long serialVersionUID = -2709945458591238976L;
