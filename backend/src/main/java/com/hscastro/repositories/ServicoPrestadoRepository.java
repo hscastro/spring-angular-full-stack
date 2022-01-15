@@ -12,7 +12,7 @@ import com.hscastro.entities.ServicoPrestado;
 @Repository
 public interface ServicoPrestadoRepository extends JpaRepository<ServicoPrestado, Long>{
 
-    @Query("select s from ServicePrestado s join s.cliente c where upper( c.nome ) like upper( :nome ) and  MONTH( s.data ) =:mes ")
+    @Query("select s from ServicoPrestado s join s.cliente c where upper( c.nome ) like upper( :nome ) and  MONTH( s.data ) =:mes ")
     List<ServicoPrestado> findByNameClienteAndMes(@Param("nome") String nome,
         @Param("mes") Integer mes);
 
