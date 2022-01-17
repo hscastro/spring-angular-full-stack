@@ -1,3 +1,4 @@
+import { ServicoPrestado } from './../servicoPrestado';
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from '../../clientes.service';
 import { Cliente } from '../../clientes/cliente';
@@ -10,15 +11,22 @@ import { Cliente } from '../../clientes/cliente';
 export class ServicoPrestadoFormComponent implements OnInit {
 
   clientes: Cliente[] = []
+  servico: ServicoPrestado;
 
   constructor(
     private clienteService: ClientesService
-  ) { }
+  ) {
+    this.servico = new ServicoPrestado();
+  }
 
   ngOnInit() {
     this.clienteService
       .getClientes()
       .subscribe(response => this.clientes = response );
+  }
+
+  onSubmit() {
+     console.log(this.clientes)
   }
 
 }
