@@ -25,7 +25,6 @@ import com.hscastro.service.ClienteService;
 
 @RestController
 @RequestMapping(value = "/api/clientes")
-@CrossOrigin("http://localhost:4200")
 public class ClienteResource {
 
 	@Autowired

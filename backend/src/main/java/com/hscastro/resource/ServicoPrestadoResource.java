@@ -26,8 +26,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
-@RequestMapping(value = "/api/service-prestado")
-@CrossOrigin("http://localhost:4200")
+@RequestMapping(value = "/api/service-prestados")
 public class ServicoPrestadoResource {
 
 	@Autowired
